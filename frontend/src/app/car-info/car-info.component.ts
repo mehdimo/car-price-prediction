@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Car} from '../Car'
 
@@ -22,8 +22,8 @@ export class CarInfoComponent {
         engine: "4"
     }
 
-    car_models_url: string = "/assets/car_models_list.json";
-    car_models: any;
+    @Input() car_models: { [key: string]: string[] } = {};
+    @Input() engine_vols: { [key: string]: string[] } = {};
     objectKeys = Object.keys;
 
     constructor(private http: HttpClient) {}
@@ -42,9 +42,4 @@ export class CarInfoComponent {
             );
     }
 
-    ngOnInit() {
-        this.http.get(this.car_models_url).subscribe(res => {
-          this.car_models = res;
-        });
-    }
 }

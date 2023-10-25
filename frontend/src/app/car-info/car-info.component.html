@@ -2,11 +2,17 @@
     <div>
         <label>Manufacturer:</label>
         <select [(ngModel)]="car.manufacturer">
-            <option *ngFor="let item of objectKeys(car_models)" [value]="item">{{ item }}</option>
+            <option *ngFor="let item of objectKeys(car_models || {})" [value]="item">{{ item }}</option>
         </select>
     </div>
 
-    <div>
+    <div *ngIf="!car.manufacturer"> <!-- show a disabled selector before manufacturer is set -->
+        <label>Model:</label>
+        <select disabled>
+            <option></option>
+        </select>
+    </div>
+    <div *ngIf="car.manufacturer">
         <label>Model:</label>
         <select [(ngModel)]="car.model">
             <option *ngFor="let model of car_models[car.manufacturer]" [value]="model">{{ model }}</option>
@@ -23,9 +29,17 @@
         <input type="number" [(ngModel)]="car.mileage">
     </div>
 
-    <div>
+    <div *ngIf="!car.manufacturer">
+    <label>Engine:</label>
+    <select disabled>
+        <option></option>
+    </select>
+    </div>
+    <div *ngIf="car.manufacturer">
         <label>Engine:</label>
-        <input type="number" [(ngModel)]="car.engine">
+        <select [(ngModel)]="car.engine">
+            <option *ngFor="let engine of engine_vols[car.manufacturer]" [value]="engine">{{ engine }}</option>
+        </select>
     </div>
 </div>
 <div>
