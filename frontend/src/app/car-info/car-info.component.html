@@ -1,0 +1,48 @@
+<div class="carform">
+    <div>
+        <label>Manufacturer:</label>
+        <select [(ngModel)]="car.manufacturer">
+            <option *ngFor="let item of objectKeys(car_models)" [value]="item">{{ item }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Model:</label>
+        <select [(ngModel)]="car.model">
+            <option *ngFor="let model of car_models[car.manufacturer]" [value]="model">{{ model }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Year:</label>
+        <input type="number" [(ngModel)]="car.year">
+    </div>
+
+    <div>
+        <label>Mileage:</label>
+        <input type="number" [(ngModel)]="car.mileage">
+    </div>
+
+    <div>
+        <label>Engine:</label>
+        <input type="number" [(ngModel)]="car.engine">
+    </div>
+</div>
+<div>
+    <button (click)="submit()">Predict</button>
+</div>
+
+<div class="selectedcar">
+    <div>
+        <label>Selected Car: </label>
+        <span>{{car.year}}&nbsp;</span>
+        <span>{{car.manufacturer | uppercase}}&nbsp;</span>
+        <span>{{car.model}}&nbsp;</span>
+        <label>Mileage: </label><span>{{car.mileage}}</span>
+    </div>
+
+    <div>
+        <label>Predicted price:</label>
+        <span>{{predicted_price}}</span>
+    </div>
+</div>
