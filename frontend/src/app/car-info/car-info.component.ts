@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Car} from '../Car'
 
@@ -11,8 +11,9 @@ type CarModels = {
   templateUrl: './car-info.component.html',
   styleUrls: ['./car-info.component.sass']
 })
-export class CarInfoComponent {
-    backend_url = "http://localhost:8081/api";
+export class CarInfoComponent implements OnInit{
+    backendHost = 'localhost';
+    backend_url = "/api";
     predicted_price = ""
     car: Car = {
         manufacturer: '',
@@ -30,7 +31,7 @@ export class CarInfoComponent {
 
     submit() {
         console.log(`Car Info: ${this.car.year} ${this.car.manufacturer} ${this.car.model}, ${this.car.mileage} miles`);
-        const predict_url = this.backend_url + "/predict"
+        const predict_url = this.backendHost + this.backend_url + "/predict"
         this.http.post(predict_url, this.car).subscribe(
               (response: any) => {
                 console.log('Car info sent successfully:', response);
@@ -40,6 +41,12 @@ export class CarInfoComponent {
                 console.log('Error sending car info:', error);
               }
             );
+    }
+
+    ngOnInit() {
+        this.http.get('/assets/config.json').subscribe((config: any) => {
+            this.backendHost = config.backendHost;
+        });
     }
 
 }
