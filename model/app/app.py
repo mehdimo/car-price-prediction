@@ -14,9 +14,9 @@ app = Flask(__name__)
 CORS(app)
 
 def load_artifacts():
-    model_gbr_path = "../model_objects/model_gbr.pkl"
-    mileage_sclaer_path = "../model_objects/mileage_sclaer.pkl"
-    all_columns_path = "../model_objects/all_columns.pkl"
+    model_gbr_path = "model_objects/model_gbr.pkl"
+    mileage_sclaer_path = "model_objects/mileage_sclaer.pkl"
+    all_columns_path = "model_objects/all_columns.pkl"
     with open(model_gbr_path, 'rb') as f:
         gbr_model = pickle.load(f)
 
