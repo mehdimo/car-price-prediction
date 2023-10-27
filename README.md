@@ -17,7 +17,7 @@ root
 ## How to Run
 
 ### Use docker-compose
-* Go in to `frontend/src/assets/config.json` and change the `backendHost` to the hosing machine. 
+* Go in to `frontend/src/assets/config.json` and change the `backendHost` to the hosting machine. 
 * In the root of the project, run `docker-compose up`
 * The two containers will run and your app will be available on the Host IP (port 80). 
 
