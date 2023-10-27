@@ -17,6 +17,7 @@ root
 ## How to Run
 
 ### Use docker-compose
+Note: Make sure you have [Docker](https://docs.docker.com/engine/install/) installed.
 * Go in to `frontend/src/assets/config.json` and change the `backendHost` to the hosting machine. 
 * In the root of the project, run `docker-compose up`
 * The two containers will run and your app will be available on the Host IP (port 80). 
@@ -39,13 +40,19 @@ Both frontend and backend applications come with their own Docker file.
       - `--name` assigns a name to the container.
 ### Manual
 1. Backend
-  - `cd model/app`
+  - Navigate to the `model/` folder: `cd model`
+  - Create virtual env.
+    - `python -m venv venv`
+    - `source venv/bin/activate`
+  - `pip install -r requirements.txt`
+  - `cd app`
   - `python app.py`
 
 2. Frontend
-  - `cd frontend`
+
+  - Note: Make sure you have [Node](https://nodejs.org/en/download) version 20 (or higher).
+  - Navigate to `frontend/` folder: `cd frontend`
+  - Install dependencies: `npm install`
   - `ng serve` to run your Angular application during development.
     - It's not recommended to use it in production.
-
-
 
