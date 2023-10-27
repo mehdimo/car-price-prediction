@@ -8,7 +8,7 @@ This is a simple app to show how to create a complete solution that uses a machi
 root
  +-data: contains the training data.
  |
- +-fronend: frontend application by Angular
+ +-frontend: frontend application by Angular
  |
  +-model: backend predictor model in python and Flask API.
  
