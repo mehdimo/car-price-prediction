@@ -27,7 +27,7 @@ Both frontend and backend applications come with their own Docker file.
 1. Run the model (python):
 
     * change directory to `model/`
-    * Run `docker built -t backend`
+    * Run `docker built -t backend .`
     * Run `docker run -p 8081:8081 backend`
     * The backend app will be running on `http://localhost:8081`.
 
